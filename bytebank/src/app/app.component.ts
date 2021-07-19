@@ -1,17 +1,18 @@
+import { TransferenciaService } from './services/transferencia.service';
 import { Component } from '@angular/core';
 
- @Component({
-   //'@Component' metadado que adiciona propriedades a minha classe
-   selector: 'app-root',
-   templateUrl: './app.component.html',
-   styleUrls: ['./app.component.scss'],
- })
- export class AppComponent {
-   title = 'bytebank';
-transferencia: any;
+@Component({
+  //'@Component' metadado que adiciona propriedades a minha classe
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
+})
+export class AppComponent {
+  title = 'bytebank';
 
-   transferir($event: any) {
-     console.log($event);
-     this.transferencia = $event
-   }
- }
+  constructor(private service: TransferenciaService) {}
+
+  transferir($event: any) {
+    this.service.adicionar($event);
+  }
+}
